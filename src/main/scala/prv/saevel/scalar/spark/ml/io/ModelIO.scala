@@ -9,11 +9,11 @@ object ModelIO {
     * @param model model to save.
     * @param location location to which the model is saved.
     */
-  def saveModel(model: MLWritable, location: String): Unit = model.write.overwrite.save(location)
+  def saveModel(model: MLWritable, location: String): Unit = ???
 
   /**
     * Reads a <code>LinearRegressionModel</code> from the given location.
     */
-  def readLinearRegressionModel(location: String): LinearRegressionModel = LinearRegressionModel.read.load(location)
+  def readLinearRegressionModel(location: String): LinearRegressionModel = ???
 
 }

@@ -22,22 +22,5 @@ object CrossValidatorPipeline {
     *   The <code>CrossValidator</code> trains / validates the "numTrees" values for the <code>RandomForestClassifier</code>
     *   from the values in <code>possibleNumTress</code>.
     */
-  def apply(possibleNumTrees: Array[Int]): CrossValidator = {
-    val classifier = new RandomForestClassifier().setFeaturesCol("features").setPredictionCol("predicted_income_bracket").setLabelCol("incomeBracket")
-
-    val evaluator = new MulticlassClassificationEvaluator().setPredictionCol("predicted_income_bracket").setLabelCol("incomeBracket").setMetricName("accuracy")
-
-    val pipeline = new Pipeline().setStages(Array(
-      new StringIndexerModel(Array("Female", "Male")).setInputCol("sex").setOutputCol("sex_indexed"),
-      new StringIndexerModel(Array("Primary", "Secondary", "Higher", "PhD")).setInputCol("educationLevel").setOutputCol("education_indexed"),
-      new StringIndexerModel(Array("Physical", "Retail", "STEM", "Medical")).setInputCol("fieldOfExpertise").setOutputCol("field_indexed"),
-      new VectorAssembler().setInputCols(Array("sex_indexed", "education_indexed", "field_indexed", "age", "yearsOfExperience")).setOutputCol("features"),
-      classifier
-    ))
-
-    new CrossValidator()
-      .setEstimator(pipeline)
-      .setEstimatorParamMaps(new ParamGridBuilder().addGrid(classifier.numTrees, possibleNumTrees).build)
-      .setEvaluator(evaluator)
-  }
+  def apply(possibleNumTrees: Array[Int]): CrossValidator = ???
 }
