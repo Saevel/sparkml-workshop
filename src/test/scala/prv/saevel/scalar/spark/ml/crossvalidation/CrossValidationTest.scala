@@ -76,7 +76,6 @@ class CrossValidationTest extends WordSpec with PropertyChecks with Matchers {
     }) + 75.0 * (0.8 * age - 0.01 * age * age + 15)
   }
 
-  // TODO: Refactor into named constants
   private def selectBracket(income: Double): Double = {
     if(income < 4000.0) {
       1.0
